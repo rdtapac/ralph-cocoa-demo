@@ -9,8 +9,8 @@ class GoogleMapLib extends MainApp {
 
     // Japan default location
     this.defaultPosition = {
-      lat: 35.6804,
-      lng: 139.7690
+      lat: 35.6905761,
+      lng: 139.7022638
     };
 
     this.imageBaseUrl ='http://127.0.0.1:8000/static/assets/images/';
@@ -23,7 +23,8 @@ class GoogleMapLib extends MainApp {
     this.iconList = {
         asahi: this.imageBaseUrl + 'dark_blue.png',
         coke: this.imageBaseUrl + 'dark_red.png',
-        kirin: this.imageBaseUrl + 'light_red.png'
+        kirin: this.imageBaseUrl + 'light_red.png',
+        suntory: this.imageBaseUrl + 'light_blue.png'
     }
 
     // Create map object
@@ -32,7 +33,7 @@ class GoogleMapLib extends MainApp {
         this.defaultPosition.lat,
         this.defaultPosition.lng
       ),
-      zoom: 14
+      zoom: 17
     });
 //    this.currentPos = this.getCurrentPos();
     this.filterCategory = 0;
