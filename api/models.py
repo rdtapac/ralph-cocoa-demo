@@ -8,37 +8,44 @@ from django.conf import settings
 class VendingMachines(models.Model):
     managed = False
     address_data = []
+    vending_machine_data = []
+    parsed_data = []
 
     def __init__(self):
         self.compose_data()
 
 
-
     def compose_data(self):
-        address_json_filename = os.path.join(settings.BASE_DIR, 'api/json_data_folder' ,'vending_machine_address.json')
-        address_file = open(address_json_filename, 'r')
-        address_file_contents = address_file.read()
-        address_file.close()
-        self.address_data = json.loads(address_file_contents)
 
+        try:
+            address_json_filename = os.path.join(settings.BASE_DIR, 'api/json_data_folder',
+                                                 'vending_machine_address.json')
+            address_file = open(address_json_filename, 'r')
+            address_file_contents = address_file.read()
+            address_file.close()
+            self.address_data = json.loads(address_file_contents)
+
+            # TODO :: separate reading and storing json files to another method, this is repetiitive
+            vending_machine_info_json_filename = os.path.join(settings.BASE_DIR, 'api/json_data_folder',
+                                                 'vending_machine_info.json')
+            vending_machine_file_file = open(vending_machine_info_json_filename, 'r')
+            vending_machine_file_contents = vending_machine_file_file.read()
+            vending_machine_file_file.close()
+            self.vending_machine_data = json.loads(vending_machine_file_contents)
+
+            for machine_address_elem in self.address_data:
+                parsed_elem = machine_address_elem
+                vending_machine_id = str(machine_address_elem["id"])
+                vending_machine_info  = self.vending_machine_data[vending_machine_id]
+                parsed_elem["vending_machine_info"] = vending_machine_info
+                self.parsed_data.append(parsed_elem)
+
+        except Exception as e:
+            pass
 
 
     def get_all(self):
-        test_data = []
-
-        test_data = self.address_data
-        # test_data = [
-        #     {
-        #         "id": 241218,
-        #         "lat": 35.6762,
-        #         "long": 139.6503,
-        #         "address": "〒160-0022 東京都新宿区新宿３丁目２３−１７"
-        #     }
-        # ]
-
-
-
-        return test_data
+        return self.parsed_data
 
     def get_per_layer(self, layer_id):
         pass

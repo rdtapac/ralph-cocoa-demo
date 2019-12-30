@@ -1,74 +1,65 @@
-[
-  {
-    "id": 241116,
+{
+   "241116": {
     "maker": "アサヒ",
     "brand": "asahi",
     "merchant": "十六茶500ペット",
     "price": "140",
-    "warm" : "つめたい"
+    "temp": "つめたい"
   },
-  {
-    "id": 241124,
-    "maker": "アサヒ",
-    "brand": "asahi",
-    "merchant": "カルピスソーダ５００ペット",
-    "price": "120",
-    "warm" : "つめたい"
+  "241124": {
+  "maker": "アサヒ",
+  "brand": "asahi",
+  "merchant": "カルピスソーダ５００ペット",
+  "price": "120",
+  "temp": "つめたい"
   },
-  {
-    "id": 241125,
-    "maker": "アサヒ",
-    "brand": "asahi",
-    "merchant": "なだ万監修茶５００ペット",
-    "price": "120",
-    "warm" : "つめたい"
+  "241125" : {
+  "maker": "アサヒ",
+  "brand": "asahi",
+  "merchant": "なだ万監修茶５００ペット",
+  "price": "120",
+  "temp": "つめたい"
   },
-  {
-    "id": 241206,
-    "maker": "アサヒ",
-    "brand": "asahi",
-    "merchant": "ワンダ特製カフェオレ１８５缶",
-    "price": "120",
-    "warm" : "あたたかい"
+  "241206" : {
+  "maker": "アサヒ",
+  "brand": "asahi",
+  "merchant": "ワンダ特製カフェオレ１８５缶",
+  "price": "120",
+  "temp": "あたたかい"
   },
-  {
-    "id": 241120,
-    "maker": "コカ・コーラ",
-    "brand": "coca_cola",
-    "merchant": "コカコーラ500mlペット",
-    "price": "160",
-    "warm" : "つめたい"
+  "241120" : {
+  "maker": "コカ・コーラ",
+  "brand": "Coca-Cola",
+  "merchant": "コカコーラ500mlペット",
+  "price": "160",
+  "temp" : "つめたい"
   },
-  {
-    "id": 241207,
-    "maker": "コカ・コーラ",
-    "brand": "coca_cola",
-    "merchant": "い･ろ･は･す 天然水555mlペット",
-    "price": "100",
-    "warm" : "つめたい"
+  "241207" : {
+  "maker": "コカ・コーラ",
+  "brand": "Coca-Cola",
+  "merchant": "い･ろ･は･す 天然水555mlペット",
+  "price": "100",
+  "temp": "つめたい"
   },
-  {
-    "id": 241213,
-    "maker": "コカ・コーラ",
-    "brand": "coca_cola",
-    "merchant": "コカコーラ500mlペット",
-    "price": "160",
-    "warm" : "つめたい"
+  "241213" : {
+  "maker": "コカ・コーラ",
+  "brand": "Coca-Cola",
+  "merchant": "コカコーラ500mlペット",
+  "price": "160",
+  "temp": "つめたい"
   },
-  {
-    "id": 241121,
-    "maker": "サントリー",
-    "brand": "suntory",
-    "merchant": "BOSSレインボーマウンテン_缶_200未満",
-    "price": "110",
-    "warm" : "あたたかい"
+  "241121" : {
+  "maker": "サントリー",
+  "brand": "suntory",
+  "merchant": "BOSSレインボーマウンテン_缶_200未満",
+  "price": "110",
+  "temp": "あたたかい"
   },
-  {
-    "id": 241216,
-    "maker": "ネオス株式会社",
-    "brand": "suntory",
-    "merchant": "BOSS　Café　au Lait_缶_200未満",
-    "price": "110",
-    "warm" : "あたたかい"
+  "241216" : {
+  "maker": "ネオス株式会社",
+  "brand": "suntory",
+  "merchant": "BOSS　Café　au Lait_缶_200未満",
+  "price": "110",
+  "temp": "あたたかい"
   }
-]
+}
