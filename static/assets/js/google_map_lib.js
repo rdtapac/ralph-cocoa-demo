@@ -136,6 +136,8 @@ class GoogleMapLib extends MainApp {
         });
         this.markers.push(marker);
 
+        console.log(this.iconList[markerData.brand])
+
         this.markers.forEach(function(markerObj, markerId) {
           markerObj.setMap(null);
         });
@@ -144,6 +146,7 @@ class GoogleMapLib extends MainApp {
         this.markers.forEach(markerObj => {
           markerObj.setMap(this.map);
         });
+
 
         var infoWindow = this.createInfoWindow(markerData);
 
@@ -226,8 +229,6 @@ class GoogleMapLib extends MainApp {
 //    imgElem.src = "https://firebasestorage.googleapis.com/v0/b/podpics-01.appspot.com/o/enquete%2F241120%2FA1M4ZXnpzZdpsELszvbv8Jqd9ji2%2Fi_uFqv4mPjIgEtsTaJ.jpg?alt=media&token=4f469b4b-413d-4aa5-a507-2c5ace3ee137"
 //    imgElem.height = "200";
 //    infoDialog.append(this.wrapDivInfoContainer(imgElem));
-
-    console.log('-----------------------------------------------------------------')
     // Image handler
     if (markerData.vending_machine_info.images) {
         var divCardDeck = document.createElement('div');
@@ -240,7 +241,6 @@ class GoogleMapLib extends MainApp {
             divCardImg.src = imgElemSrc;
              divCardImg.width = "80";
             divCardElem.append(divCardImg);
-             console.log(imgElemSrc);
              divCardDeck.append(divCardElem);
         });
         infoDialog.append(divCardDeck);
