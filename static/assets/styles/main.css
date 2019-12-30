@@ -48,8 +48,14 @@ body,
 
 
 #map-marker-label {
-    background-color: #F40009 !important;
-    color: #FFFF !important;
     font-family: "Georgia" !important;
-    font-style: italic !important;
+    font-size: 38px;
+}
+
+#main-nav {
+    z-index: 99;
+}
+
+body {
+    width: 100% !important;
 }
