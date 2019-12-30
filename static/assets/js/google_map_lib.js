@@ -185,50 +185,92 @@ class GoogleMapLib extends MainApp {
     // console.log(markerData);
     var vendingMachineInfo = markerData.vending_machine_info;
 
+
+
     var infoWindow = new google.maps.InfoWindow();
+    infoWindow.setOptions({maxWidth:1200});
 
     var infoDialog = document.createElement("div");
     infoDialog.className = "row";
 
     // create name elem and append
+//    var divHeaderCol = document.createElement('div');
+//    divHeaderCol.className = 'col-md-12';
+
     var mapLabel = document.createElement("h3");
     mapLabel.textContent = vendingMachineInfo.brand;
     infoDialog.append(this.wrapDivInfoContainer(mapLabel));
 
-    // create address elem and append
-    var addressElem = document.createElement("p");
-    addressElem.className = "mt-4";
-    addressElem.textContent = markerData.address;
-    infoDialog.append(this.wrapDivInfoContainer(addressElem));
 
-    // create maker name elem and append
-    var makerNameElem = document.createElement("span");
-    makerNameElem.className = "mt-4";
-    makerNameElem.textContent = "自販機管理メーカー (maker):  " + markerData.vending_machine_info.maker;
-    infoDialog.append(this.wrapDivInfoContainer(makerNameElem));
 
-    // create merchant elem and append
-    var merchantElem = document.createElement("span");
-    merchantElem.className = "mt-4";
-    merchantElem.textContent = "商品名 (Merchant Name):  " + markerData.vending_machine_info.merchant;
-    infoDialog.append(this.wrapDivInfoContainer(merchantElem));
+    var tableInfo = document.createElement("table");
+    tableInfo.className = 'table table-borderless table-sm';
+    var tableInfoBody = document.createElement('tbody');
 
-    // create price elem and append
-    var priceElem = document.createElement("span");
-    priceElem.className = "mt-4";
-    priceElem.textContent = "価格 (Price):  " + markerData.vending_machine_info.price;
-    infoDialog.append(this.wrapDivInfoContainer(priceElem));
+    // Address row
+    var tblTRRowAddress = document.createElement('tr');
+    tblTRRowAddress.className = 'margin-top-8';
+    var tblTDRowAddressLabel = document.createElement('td');
+    tblTDRowAddressLabel.className = 'colspan-2';
+    tblTDRowAddressLabel.textContent = markerData.address;
+    tblTRRowAddress.append(tblTDRowAddressLabel);
+    tableInfoBody.append(tblTRRowAddress);
 
-    // create temp elem and append
-    var tempElem = document.createElement("span");
-    tempElem.className = "mt-4";
-    tempElem.textContent = "温度 (Warm/Cold):  " + markerData.vending_machine_info.temp;
-    infoDialog.append(this.wrapDivInfoContainer(tempElem));
 
-//    var imgElem = document.createElement("img");
-//    imgElem.src = "https://firebasestorage.googleapis.com/v0/b/podpics-01.appspot.com/o/enquete%2F241120%2FA1M4ZXnpzZdpsELszvbv8Jqd9ji2%2Fi_uFqv4mPjIgEtsTaJ.jpg?alt=media&token=4f469b4b-413d-4aa5-a507-2c5ace3ee137"
-//    imgElem.height = "200";
-//    infoDialog.append(this.wrapDivInfoContainer(imgElem));
+    // Maker name
+    var tblTRMaker = document.createElement('tr');
+    var tblTDMakerLabel = document.createElement('td');
+    tblTDMakerLabel.textContent = '自販機管理メーカー (maker):';
+    tblTRMaker.append(tblTDMakerLabel);
+
+    var tblTDMakerValue = document.createElement('td');
+    tblTDMakerValue.textContent = markerData.vending_machine_info.maker;
+    tblTRMaker.append(tblTDMakerValue);
+
+    tableInfoBody.append(tblTRMaker);
+
+
+    // Merchant name
+    var tblTRMerchant = document.createElement('tr');
+    var tblTDMerchantLabel = document.createElement('td');
+    tblTDMerchantLabel.textContent = '商品名 (Merchant Name):';
+    tblTRMerchant.append(tblTDMerchantLabel);
+
+    var tblTDMerchantValue = document.createElement('td');
+    tblTDMerchantValue.textContent = markerData.vending_machine_info.merchant;
+    tblTRMerchant.append(tblTDMerchantValue);
+
+    tableInfoBody.append(tblTRMerchant);
+
+
+    // Price name
+    var tblTRPrice = document.createElement('tr');
+    var tblTDPriceLabel = document.createElement('td');
+    tblTDPriceLabel.textContent = '価格 (Price): ';
+    tblTRPrice.append(tblTDPriceLabel);
+
+    var tblTDPriceValue = document.createElement('td');
+    tblTDPriceValue.textContent = markerData.vending_machine_info.price;
+    tblTRPrice.append(tblTDPriceValue);
+
+    tableInfoBody.append(tblTRPrice);
+
+    // Temp
+    var tblTRTemp = document.createElement('tr');
+    var tblTDTempLabel = document.createElement('td');
+    tblTDTempLabel.textContent = '温度 (Warm/Cold): ';
+    tblTRTemp.append(tblTDTempLabel);
+
+    var tblTDTempValue = document.createElement('td');
+    tblTDTempValue.textContent = markerData.vending_machine_info.temp;
+    tblTRTemp.append(tblTDTempValue);
+
+    tableInfoBody.append(tblTRTemp);
+
+    tableInfo.append(tableInfoBody);
+    infoDialog.append(this.wrapDivInfoContainer(tableInfo));
+
+
     // Image handler
     if (markerData.vending_machine_info.images) {
         var divCardDeck = document.createElement('div');
@@ -243,55 +285,8 @@ class GoogleMapLib extends MainApp {
             divCardElem.append(divCardImg);
              divCardDeck.append(divCardElem);
         });
-        infoDialog.append(divCardDeck);
+        infoDialog.append(this.wrapDivInfoContainer(divCardDeck));
     }
-
-
-//    // create total visit elem and append
-//    var totalVisitElem = document.createElement("div");
-//    totalVisitElem.className = "mt-4 font-weight-bold";
-//    totalVisitElem.textContent = "Total Visit: " + markerData.total_visit;
-//    infoDialog.append(this.wrapDivInfoContainer(totalVisitElem));
-
-    // create control footer
-//    var footerElemContainer = document.createElement("div");
-//    footerElemContainer.className = "mt-3";
-
-//
-//    footerElemContainer.appendChild(btnGetDirections);
-//
-//    // Create visit and order button for info window
-//    var visitAndOrder = document.createElement("button");
-//    visitAndOrder.textContent = "Visit and Order";
-//    visitAndOrder.setAttribute("class", "btn btn-warning btn-sm mr-3");
-//
-//    // Initialize modal load
-//    if (this.objRestaurantOrderHandler) {
-//      visitAndOrder.addEventListener("click", () => {
-//        this.objRestaurantOrderHandler.initializeOrderModal(
-//          markerData.id,
-//          this
-//        );
-//        this.activeWindow.close();
-//      });
-//    } else {
-//      console.log(
-//        "[WARNING] :: this.objRestaurantOrderHandler property must be set"
-//      );
-//    }
-//    footerElemContainer.appendChild(visitAndOrder);
-//    infoDialog.append(this.wrapDivInfoContainer(footerElemContainer));
-//
-//    // Create delete button for info window
-//    var btnDeleteRestaurant = document.createElement("button");
-//    btnDeleteRestaurant.textContent = "Delete";
-//    btnDeleteRestaurant.setAttribute("class", "btn btn-danger btn-sm mr-3");
-//
-//    btnDeleteRestaurant.addEventListener("click", () => {
-//      this.objRestaurantEditHandler.delete(markerData.id, this);
-//    });
-//
-//    footerElemContainer.appendChild(btnDeleteRestaurant);
 
     // set the dialog contents to info window
     infoWindow.setContent(infoDialog);
