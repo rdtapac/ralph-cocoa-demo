@@ -1,0 +1,9 @@
+2019-12-30 15:45:51,239 WARN For [program:cocoa], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2019-12-30 15:45:51,251 INFO RPC interface 'supervisor' initialized
+2019-12-30 15:45:51,251 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-12-30 15:45:51,251 INFO daemonizing the supervisord process
+2019-12-30 15:45:51,252 INFO supervisord started with pid 12193
+2019-12-30 15:45:52,256 INFO spawned: 'cocoa' with pid 12195
+2019-12-30 15:45:53,703 INFO success: cocoa entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-12-30 15:49:04,925 INFO waiting for cocoa to stop
+2019-12-30 15:49:04,929 INFO stopped: cocoa (terminated by SIGKILL)

@@ -1,4 +1,4 @@
-#!/opt/dev/cocoa/project_cocoa/venv/bin/python3
+#!/opt/dev/cocoa/project_cocoa/venv/bin/python
 from django.core import management
 
 if __name__ == "__main__":
