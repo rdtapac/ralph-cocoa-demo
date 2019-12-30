@@ -45,3 +45,11 @@ body,
 #table-map-info {
   background-color: #ffffff;
 }
+
+
+#map-marker-label {
+    background-color: #F40009 !important;
+    color: #FFFF !important;
+    font-family: "Georgia" !important;
+    font-style: italic !important;
+}

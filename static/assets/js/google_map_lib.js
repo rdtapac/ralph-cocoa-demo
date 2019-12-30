@@ -111,12 +111,7 @@ class GoogleMapLib extends MainApp {
    */
   loadMapData(passedCategory = 0) {
     let vendingMachinesEndpoint = this.restEndpoint + "vending_machines";
-//    alert(vendingMachinesEndpoint);
-//
-//    if (passedCategory > 0) {
-//      restaurantsEndpoint = this.restEndpoint + "restaurants/" + passedCategory;
-//    }
-//
+
     axios.get(vendingMachinesEndpoint).then(response => {
       // Delete Previous Markers
       this.clearMarkers(true);
@@ -186,40 +181,43 @@ class GoogleMapLib extends MainApp {
     var vendingMachineInfo = markerData.vending_machine_info;
 
 
-
     var infoWindow = new google.maps.InfoWindow();
     infoWindow.setOptions({maxWidth:1200});
 
     var infoDialog = document.createElement("div");
     infoDialog.className = "row";
 
-    // create name elem and append
-//    var divHeaderCol = document.createElement('div');
-//    divHeaderCol.className = 'col-md-12';
-
     var mapLabel = document.createElement("h3");
+    mapLabel.className = "display-4";
+    mapLabel.id = 'map-marker-label'
     mapLabel.textContent = vendingMachineInfo.brand;
     infoDialog.append(this.wrapDivInfoContainer(mapLabel));
 
 
 
     var tableInfo = document.createElement("table");
-    tableInfo.className = 'table table-borderless table-sm';
+    tableInfo.className = 'table table-bordered table-dark table-sm';
+    tableInfo.id = "table-info";
     var tableInfoBody = document.createElement('tbody');
 
     // Address row
     var tblTRRowAddress = document.createElement('tr');
-    tblTRRowAddress.className = 'margin-top-8';
+    tblTRRowAddress.className = 'font-weight-bold';
     var tblTDRowAddressLabel = document.createElement('td');
-    tblTDRowAddressLabel.className = 'colspan-2';
-    tblTDRowAddressLabel.textContent = markerData.address;
+    tblTDRowAddressLabel.textContent = '住所 (address):';
     tblTRRowAddress.append(tblTDRowAddressLabel);
+
+    var tblTDRowAddressValue = document.createElement('td');
+    tblTDRowAddressValue.textContent = markerData.address;;
+    tblTRRowAddress.append(tblTDRowAddressValue);
+
     tableInfoBody.append(tblTRRowAddress);
 
 
     // Maker name
     var tblTRMaker = document.createElement('tr');
     var tblTDMakerLabel = document.createElement('td');
+    tblTDMakerLabel.className = 'font-weight-bold';
     tblTDMakerLabel.textContent = '自販機管理メーカー (maker):';
     tblTRMaker.append(tblTDMakerLabel);
 
@@ -233,6 +231,7 @@ class GoogleMapLib extends MainApp {
     // Merchant name
     var tblTRMerchant = document.createElement('tr');
     var tblTDMerchantLabel = document.createElement('td');
+    tblTDMerchantLabel.className = 'font-weight-bold';
     tblTDMerchantLabel.textContent = '商品名 (Merchant Name):';
     tblTRMerchant.append(tblTDMerchantLabel);
 
@@ -246,6 +245,7 @@ class GoogleMapLib extends MainApp {
     // Price name
     var tblTRPrice = document.createElement('tr');
     var tblTDPriceLabel = document.createElement('td');
+    tblTDPriceLabel.className = 'font-weight-bold';
     tblTDPriceLabel.textContent = '価格 (Price): ';
     tblTRPrice.append(tblTDPriceLabel);
 
@@ -258,6 +258,7 @@ class GoogleMapLib extends MainApp {
     // Temp
     var tblTRTemp = document.createElement('tr');
     var tblTDTempLabel = document.createElement('td');
+    tblTDTempLabel.className = 'font-weight-bold';
     tblTDTempLabel.textContent = '温度 (Warm/Cold): ';
     tblTRTemp.append(tblTDTempLabel);
 
